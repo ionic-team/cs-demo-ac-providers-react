@@ -1,9 +1,23 @@
 {
   "name": "cs-demo-ac-providers-react",
   "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "https://ionicframework.com/",
   "private": true,
+  "scripts": {
+    "start": "PORT=8100 react-scripts start",
+    "build": "react-scripts build && npx cap sync",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@capacitor/core": "2.0.1",
+    "@capacitor/ios": "~2.0.1",
+    "@fortawesome/fontawesome-svg-core": "~1.2.28",
+    "@fortawesome/free-brands-svg-icons": "~5.13.0",
+    "@fortawesome/free-solid-svg-icons": "~5.13.0",
+    "@fortawesome/react-fontawesome": "~0.1.9",
+    "@ionic-enterprise/auth": "~2.1.0",
     "@ionic/react": "^5.0.7",
     "@ionic/react-router": "^5.0.7",
     "@testing-library/jest-dom": "^4.2.4",
@@ -23,11 +37,9 @@
     "react-scripts": "3.4.1",
     "typescript": "3.8.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@capacitor/cli": "2.0.1",
+    "prettier": "2.0.5"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,9 +55,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@capacitor/cli": "2.0.1"
   },
   "description": "An Ionic project"
 }

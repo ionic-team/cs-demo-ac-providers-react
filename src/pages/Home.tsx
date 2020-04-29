@@ -1,23 +1,32 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+import { faMicrosoft } from '@fortawesome/free-brands-svg-icons';
+
+import { useAzureAuth } from '../hooks/useAzureAuth';
+
+import AuthProvider, { AuthProviderProps } from '../components/AuthProvider';
+
 import './Home.css';
 
 const Home: React.FC = () => {
+
+  const providers: AuthProviderProps[] = [{
+    name: 'Azure B2C',
+    color: 'tertiary',
+    icon: faMicrosoft,
+    hook: useAzureAuth()
+  }];
+
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
+        <div className="container">
+          <div className="container__inner">
+            {providers.map((provider, index) =>
+              <AuthProvider provider={provider} key={index} />
+            )}
+          </div>
+        </div>
       </IonContent>
     </IonPage>
   );
