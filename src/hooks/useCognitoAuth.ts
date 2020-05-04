@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { IonicAuth } from '@ionic-enterprise/auth';
 
-import { AzureOptions } from '../constants';
+import { CognitoOptions } from '../constants';
 
-const azureAuth = new IonicAuth(AzureOptions());
+const cognitoAuth = new IonicAuth(CognitoOptions());
 
-export const useAzureAuth = () => {
+export const useCognitoAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   useEffect(() => {
     const init = async () => {
-      const authenticationStatus = await azureAuth.isAuthenticated();
+      const authenticationStatus = await cognitoAuth.isAuthenticated();
       setIsAuthenticated(authenticationStatus);
     };
     init();
@@ -18,25 +18,25 @@ export const useAzureAuth = () => {
 
   const login = async (): Promise<void> => {
     try {
-      await azureAuth.login();
+      await cognitoAuth.login();
       setIsAuthenticated(true);
 
     } catch (error) {
-      console.log('Error logging in to Azure', error);
+      console.log('Error logging in to AWS Cognito', error);
     }
   };
 
   const logout = async (): Promise<void> => {
     try {
-      await azureAuth.logout();
+      await cognitoAuth.logout();
       setIsAuthenticated(false);
     } catch (error) {
-      console.log('Error logging out from Azure', error);
+      console.log('Error logging out from AWS Cognito', error);
     }
   };
 
   const refresh = async (): Promise<void> => {
-    const authenticationStatus = await azureAuth.isAuthenticated();
+    const authenticationStatus = await cognitoAuth.isAuthenticated();
     setIsAuthenticated(authenticationStatus);
   };
 
