@@ -1,9 +1,8 @@
 import { IonContent, IonPage } from '@ionic/react';
 import React from 'react';
-import { faMicrosoft } from '@fortawesome/free-brands-svg-icons';
+import { faMicrosoft, faAmazon } from '@fortawesome/free-brands-svg-icons';
 
-import { useAzureAuth } from '../hooks/useAzureAuth';
-
+import { useAzureAuth, useCognitoAuth } from '../hooks';
 import AuthProvider, { AuthProviderProps } from '../components/AuthProvider';
 
 import './Home.css';
@@ -15,6 +14,11 @@ const Home: React.FC = () => {
     color: 'tertiary',
     icon: faMicrosoft,
     hook: useAzureAuth()
+  }, {
+    name: 'Cognito',
+    color: 'warning',
+    icon: faAmazon,
+    hook: useCognitoAuth()
   }];
 
   return (

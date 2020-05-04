@@ -35,9 +35,9 @@ const AuthProvider: React.FC<{ provider: AuthProviderProps }> =
         case 'tertiary':
         case 'danger':
         case 'dark':
-          return true;
-        default:
           return false;
+        default:
+          return true;
       }
     };
 
