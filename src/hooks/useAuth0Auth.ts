@@ -3,7 +3,7 @@ import { IonicAuth } from '@ionic-enterprise/auth';
 
 import { Auth0Options } from '../constants';
 
-const auth0Auth = new IonicAuth(Auth0Options());
+const auth0Auth = new IonicAuth(Auth0Options);
 
 export const useAuth0Auth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);

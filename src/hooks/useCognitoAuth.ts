@@ -3,7 +3,7 @@ import { IonicAuth } from '@ionic-enterprise/auth';
 
 import { CognitoOptions } from '../constants';
 
-const cognitoAuth = new IonicAuth(CognitoOptions());
+const cognitoAuth = new IonicAuth(CognitoOptions);
 
 export const useCognitoAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);

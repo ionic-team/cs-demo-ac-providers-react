@@ -3,7 +3,7 @@ import { IonicAuth } from '@ionic-enterprise/auth';
 
 import { AzureOptions } from '../constants';
 
-const azureAuth = new IonicAuth(AzureOptions());
+const azureAuth = new IonicAuth(AzureOptions);
 
 export const useAzureAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
