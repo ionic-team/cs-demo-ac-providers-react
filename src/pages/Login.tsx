@@ -6,9 +6,9 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useAzureAuth, useCognitoAuth, useAuth0Auth } from '../hooks';
 import AuthProvider, { AuthProviderProps } from '../components/AuthProvider';
 
-import './Home.css';
+import './Login.css';
 
-const Home: React.FC = () => {
+const Login: React.FC = () => {
   const providers: AuthProviderProps[] = [
     {
       name: 'Auth0',
@@ -45,4 +45,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Login;
