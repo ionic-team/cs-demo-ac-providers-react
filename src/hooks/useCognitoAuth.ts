@@ -20,7 +20,6 @@ export const useCognitoAuth = () => {
     try {
       await cognitoAuth.login();
       setIsAuthenticated(true);
-
     } catch (error) {
       console.log('Error logging in to AWS Cognito', error);
     }
@@ -41,5 +40,4 @@ export const useCognitoAuth = () => {
   };
 
   return { isAuthenticated, login, logout, refresh };
-
 };

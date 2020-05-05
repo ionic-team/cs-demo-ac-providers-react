@@ -9,17 +9,11 @@ export const CognitoOptions = (): IonicAuthOptions => {
     discoveryUrl: process.env.REACT_APP_COGNITO_DISCOVERY_URL!,
     scope: process.env.REACT_APP_COGNITO_SCOPE!,
     audience: process.env.REACT_APP_COGNITO_AUDIENCE!,
-    redirectUri: (isPlatform('capacitor')
-      ? process.env.REACT_APP_APPHOST
-      : process.env.REACT_APP_WEBHOST
-    ) + 'login',
-    logoutUrl: (isPlatform('capacitor')
-      ? process.env.REACT_APP_APPHOST
-      : process.env.REACT_APP_WEBHOST
-    ) + 'login',
+    redirectUri: (isPlatform('capacitor') ? process.env.REACT_APP_APPHOST : process.env.REACT_APP_WEBHOST) + 'login',
+    logoutUrl: (isPlatform('capacitor') ? process.env.REACT_APP_APPHOST : process.env.REACT_APP_WEBHOST) + 'login',
     platform: isPlatform('capacitor') ? 'capacitor' : 'web',
     iosWebView: 'private',
-    logLevel: "DEBUG",
+    logLevel: 'DEBUG'
   };
 
   return options;

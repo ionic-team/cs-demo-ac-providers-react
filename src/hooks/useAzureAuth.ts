@@ -20,7 +20,6 @@ export const useAzureAuth = () => {
     try {
       await azureAuth.login();
       setIsAuthenticated(true);
-
     } catch (error) {
       console.log('Error logging in to Azure', error);
     }
@@ -41,5 +40,4 @@ export const useAzureAuth = () => {
   };
 
   return { isAuthenticated, login, logout, refresh };
-
 };
