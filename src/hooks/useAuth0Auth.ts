@@ -20,7 +20,6 @@ export const useAuth0Auth = () => {
     try {
       await auth0Auth.login();
       setIsAuthenticated(true);
-
     } catch (error) {
       console.log('Error logging in to Auth0', error);
     }
@@ -41,5 +40,4 @@ export const useAuth0Auth = () => {
   };
 
   return { isAuthenticated, login, logout, refresh };
-
 };
