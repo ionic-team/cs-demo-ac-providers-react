@@ -1,7 +1,7 @@
 import { isPlatform } from '@ionic/react';
-import { IonicAuthOptions } from '@ionic-enterprise/auth';
+import { IonicAuth, IonicAuthOptions } from '@ionic-enterprise/auth';
 
-export const CognitoOptions: IonicAuthOptions = {
+const options: IonicAuthOptions = {
   authConfig: 'cognito',
   clientID: process.env.REACT_APP_COGNITO_CLIENT_ID!,
   clientSecret: process.env.REACT_APP_COGNITO_CLIENT_SECRET!,
@@ -14,3 +14,15 @@ export const CognitoOptions: IonicAuthOptions = {
   iosWebView: 'private',
   logLevel: 'DEBUG'
 };
+
+export class CognitoService extends IonicAuth {
+  async onLoginSuccess(): Promise<void> {
+    console.log('👤 AWS Cognito:\tSuccessfully logged in.');
+  }
+
+  async onLogout(): Promise<void> {
+    console.log('👤 AWS Cognito:\tSuccessfully logged out.');
+  }
+}
+
+export default new CognitoService(options);

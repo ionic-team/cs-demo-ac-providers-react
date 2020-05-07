@@ -1,7 +1,7 @@
 import { isPlatform } from '@ionic/react';
-import { IonicAuthOptions } from '@ionic-enterprise/auth';
+import { IonicAuth, IonicAuthOptions } from '@ionic-enterprise/auth';
 
-export const Auth0Options: IonicAuthOptions = {
+const options: IonicAuthOptions = {
   authConfig: 'auth0',
   clientID: process.env.REACT_APP_AUTH0_CLIENT_ID!,
   discoveryUrl: process.env.REACT_APP_AUTH0_DISCOVERY_URL!,
@@ -13,3 +13,15 @@ export const Auth0Options: IonicAuthOptions = {
   iosWebView: 'private',
   logLevel: 'DEBUG'
 };
+
+export class Auth0Service extends IonicAuth {
+  async onLoginSuccess(): Promise<void> {
+    console.log('👤 Auth0:\tSuccessfully logged in.');
+  }
+
+  async onLogout(): Promise<void> {
+    console.log('👤 Auth0:\tSuccessfully logged out.');
+  }
+}
+
+export default new Auth0Service(options);

@@ -1,7 +1,7 @@
 import { isPlatform } from '@ionic/react';
-import { IonicAuthOptions } from '@ionic-enterprise/auth';
+import { IonicAuth, IonicAuthOptions } from '@ionic-enterprise/auth';
 
-export const AzureOptions: IonicAuthOptions = {
+const options: IonicAuthOptions = {
   authConfig: 'azure',
   clientID: process.env.REACT_APP_AZURE_CLIENT_ID!,
   redirectUri: isPlatform('capacitor')
@@ -17,3 +17,15 @@ export const AzureOptions: IonicAuthOptions = {
   iosWebView: 'private',
   logLevel: 'DEBUG'
 };
+
+export class AzureService extends IonicAuth {
+  async onLoginSuccess(): Promise<void> {
+    console.log('👤 Azure:\tSuccessfully logged in.');
+  }
+
+  async onLogout(): Promise<void> {
+    console.log('👤 Azure:\tSuccessfully logged out.');
+  }
+}
+
+export default new AzureService(options);
