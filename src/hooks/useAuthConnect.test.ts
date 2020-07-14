@@ -9,7 +9,9 @@ describe('useAuthConnect', () => {
   mock.logout = jest.fn(() => Promise.resolve());
 
   it('should initialize authentication status', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useAuthConnect(mock));
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useAuthConnect(mock),
+    );
     await waitForNextUpdate();
     expect(result.current.isAuthenticated).toBeTruthy();
     expect(mock.isAuthenticated).toHaveBeenCalled();

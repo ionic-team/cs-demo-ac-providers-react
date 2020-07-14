@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "2.0.1",
+    "@ionic/prettier-config": "^1.0.0",
     "@testing-library/react-hooks": "~3.2.1",
     "husky": "~4.2.5",
     "prettier": "~2.0.5",
@@ -66,5 +67,6 @@
       "last 1 safari version"
     ]
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "prettier": "@ionic/prettier-config"
 }

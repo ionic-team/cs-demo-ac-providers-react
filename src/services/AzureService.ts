@@ -15,7 +15,7 @@ const options: IonicAuthOptions = {
     : process.env.REACT_APP_WEBHOST! + 'login',
   platform: isPlatform('capacitor') ? 'capacitor' : 'web',
   iosWebView: 'private',
-  logLevel: 'DEBUG'
+  logLevel: 'DEBUG',
 };
 
 export class AzureService extends IonicAuth {
