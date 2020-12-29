@@ -22,13 +22,32 @@ const options: IonicAuthOptions = {
 };
 
 export class CognitoService extends IonicAuth {
+  //#region Implementing the Singleton Pattern
+
+  private static instance: CognitoService | undefined;
+
+  private constructor(options: IonicAuthOptions) {
+    super(options);
+  }
+
+  public static getInstance(): CognitoService {
+    if (!CognitoService.instance) {
+      CognitoService.instance = new CognitoService(options);
+    }
+    return CognitoService.instance;
+  }
+
+  //#endregion
+
+  //#region Example `IonicAuth` Event Handler Overrides
+
   async onLoginSuccess(): Promise<void> {
-    console.log('👤 AWS Cognito:\tSuccessfully logged in.');
+    console.log('AWS Cognito: Successfully logged in.');
   }
 
   async onLogout(): Promise<void> {
-    console.log('👤 AWS Cognito:\tSuccessfully logged out.');
+    console.log('AWS Cognito: Successfully logged out.');
   }
-}
 
-export default new CognitoService(options);
+  //#endregion
+}
