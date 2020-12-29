@@ -19,13 +19,32 @@ const options: IonicAuthOptions = {
 };
 
 export class AzureService extends IonicAuth {
+  //#region Implementing the Singleton Pattern
+
+  private static instance: AzureService | undefined;
+
+  private constructor(options: IonicAuthOptions) {
+    super(options);
+  }
+
+  public static getInstance(): AzureService {
+    if (!AzureService.instance) {
+      AzureService.instance = new AzureService(options);
+    }
+    return AzureService.instance;
+  }
+
+  //#endregion
+
+  //#region Example `IonicAuth` Event Handler Overrides
+
   async onLoginSuccess(): Promise<void> {
-    console.log('👤 Azure:\tSuccessfully logged in.');
+    console.log('Azure: Successfully logged in.');
   }
 
   async onLogout(): Promise<void> {
-    console.log('👤 Azure:\tSuccessfully logged out.');
+    console.log('Azure: Successfully logged out.');
   }
-}
 
-export default new AzureService(options);
+  //#endregion
+}

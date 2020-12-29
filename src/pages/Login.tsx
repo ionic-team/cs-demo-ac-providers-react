@@ -3,7 +3,7 @@ import React from 'react';
 import { faMicrosoft, faAmazon } from '@fortawesome/free-brands-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-import { Auth0, Azure, Cognito } from '../services';
+import { Auth0Service, AzureService, CognitoService } from '../services';
 import { useAuthConnect } from '../hooks/useAuthConnect';
 import AuthProvider, { AuthProviderProps } from '../components/AuthProvider';
 
@@ -15,20 +15,20 @@ const Login: React.FC = () => {
       name: 'Auth0',
       color: 'danger',
       icon: faStar,
-      hook: useAuthConnect(Auth0)
+      hook: useAuthConnect(Auth0Service.getInstance()),
     },
     {
       name: 'Azure B2C',
       color: 'tertiary',
       icon: faMicrosoft,
-      hook: useAuthConnect(Azure)
+      hook: useAuthConnect(AzureService.getInstance()),
     },
     {
       name: 'Cognito',
       color: 'warning',
       icon: faAmazon,
-      hook: useAuthConnect(Cognito)
-    }
+      hook: useAuthConnect(CognitoService.getInstance()),
+    },
   ];
 
   return (

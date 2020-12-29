@@ -21,13 +21,32 @@ const options: IonicAuthOptions = {
 };
 
 export class Auth0Service extends IonicAuth {
+  //#region Implementing the Singleton Pattern
+
+  private static instance: Auth0Service | undefined;
+
+  private constructor(options: IonicAuthOptions) {
+    super(options);
+  }
+
+  public static getInstance(): Auth0Service {
+    if (!Auth0Service.instance) {
+      Auth0Service.instance = new Auth0Service(options);
+    }
+    return Auth0Service.instance;
+  }
+
+  //#endregion
+
+  //#region Example `IonicAuth` Event Handler Overrides
+
   async onLoginSuccess(): Promise<void> {
-    console.log('👤 Auth0:\tSuccessfully logged in.');
+    console.log('Auth0: Successfully logged in.');
   }
 
   async onLogout(): Promise<void> {
-    console.log('👤 Auth0:\tSuccessfully logged out.');
+    console.log('Auth0: Successfully logged out.');
   }
-}
 
-export default new Auth0Service(options);
+  //#endregion
+}
