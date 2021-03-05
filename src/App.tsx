@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { Plugins } from '@capacitor/core';
+import { SplashScreen } from '@capacitor/splash-screen';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Login from './pages/Login';
@@ -27,18 +27,17 @@ import './theme/variables.css';
 /* App theme */
 import './theme/app.css';
 
-const { SplashScreen } = Plugins;
 SplashScreen.hide();
 
-const App: React.FC = () => (
+const ReactApp: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path='/login' component={Login} exact={true} />
-        <Route exact path='/' render={() => <Redirect to='/login' />} />
+        <Route path="/login" component={Login} exact={true} />
+        <Route exact path="/" render={() => <Redirect to="/login" />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );
 
-export default App;
+export default ReactApp;
